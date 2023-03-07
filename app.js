@@ -1,18 +1,12 @@
 const RPSARRAY = ["rock", "paper", "scissor"];
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
+// Start the game
+game();
 
-// Debugging
-console.log("Player: " + playerSelection + "\nComputer: " + computerSelection);
-console.log(playRound(playerSelection, computerSelection));
-
-function getComputerChoice(){
+function getComputerChoice() {
     return RPSARRAY[Math.floor(Math.random() * RPSARRAY.length)];
 }
 
-function playRound(playerSelection, computerSelection){
-    // case-insensitive the parameter
-    playerSelection = playerSelection.toLowerCase();
+function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "It's a tie"
     } else if (playerSelection === "rock") {
@@ -36,5 +30,21 @@ function playRound(playerSelection, computerSelection){
         } else {
             return "You lose! Rock bears scissor"
         }
+    }
+}
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        // Ask for user input
+        let playerSelection = prompt("rock, paper or scissor");
+        // case-insensitive the parameter
+        playerSelection = playerSelection.toLowerCase();
+        // Gets random selection for computer
+        let computerSelection = getComputerChoice();
+
+        // Debugging
+        console.log("Player: " + playerSelection + "\nComputer: " + computerSelection);
+        // Returns who wins or not
+        console.log(playRound(playerSelection, computerSelection));
     }
 }
